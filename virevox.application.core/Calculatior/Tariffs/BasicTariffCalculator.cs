@@ -1,4 +1,4 @@
-namespace virevox.application.core
+namespace Virevox.application.core
 {
     public class BasicTariffCalculator : ICostsCalculator
     {

@@ -1,17 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Builder;
+﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Logging;
-using Microsoft.Extensions.Options;
+using AutoMapper;
+using Virevox.application.core;
+using System.Collections.Generic;
+using System.Reflection;
+using System;
+using Virevox.WebApi;
 
-namespace virevox
+namespace Virevox
 {
     public class Startup
     {
@@ -25,6 +24,13 @@ namespace virevox
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            // Dependancy injection
+            services.AddTransient<IProductBuilder, ProductBuilder>();
+            services.AddTransient<IComparer<Product>, ProductComparer<Product>>();
+            
+            // Read profiles (configurations) from current assembly 
+            services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
+
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
         }
 
@@ -35,8 +41,8 @@ namespace virevox
             {
                 app.UseDeveloperExceptionPage();
             }
-
-            // app.UseHttpsRedirection();
+            
+            app.UseMiddleware<ExceptionHandlingMiddleware>();
             app.UseMvc();
         }
     }

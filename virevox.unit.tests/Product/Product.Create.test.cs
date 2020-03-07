@@ -1,8 +1,8 @@
 using System;
 using Xunit;
-using virevox.application.core;
+using Virevox.application.core;
 
-namespace virevox.unit.tests
+namespace Virevox.unit.tests
 {
     public class ProductTest
     {

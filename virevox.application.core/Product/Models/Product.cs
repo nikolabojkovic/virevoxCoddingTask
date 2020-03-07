@@ -1,8 +1,8 @@
 using System;
 
-namespace virevox.application.core
+namespace Virevox.application.core
 {
-    public class Product
+    public partial class Product
     {
         private readonly long _consumption;
         private readonly ICostsCalculator _calculatioModel;
@@ -20,7 +20,7 @@ namespace virevox.application.core
         public static Product Create(string name, long consumption, ICostsCalculator calculator)
         {
             var product = new Product(name, consumption, calculator);
-            product.CalculateAnnualCosts();
+                product.CalculateAnnualCosts();
 
             return product;
         }
