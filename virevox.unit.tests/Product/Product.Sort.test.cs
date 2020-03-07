@@ -11,8 +11,8 @@ namespace Virevox.unit.tests
         [InlineData(4500, 950, 1050)]
         [InlineData(6000, 1380, 1400)]
         public void Sort_Products_ShouldSortProductsInAscendingOrder(long consumption, 
-                                                           long expectedAnnualConstsBasic, 
-                                                           int expectedAnnualConstsBasicPackaged)
+                                                                     long expectedAnnualConstsBasic, 
+                                                                     int expectedAnnualConstsPackaged)
         {
             // Arrange
             var productBuider = new ProductBuilder();
@@ -25,7 +25,7 @@ namespace Virevox.unit.tests
             // Assert
             Assert.Equal(2, products.Length);
             Assert.Equal(expectedAnnualConstsBasic, products[0].AnnualCosts);
-            Assert.Equal(expectedAnnualConstsBasicPackaged, products[1].AnnualCosts);
+            Assert.Equal(expectedAnnualConstsPackaged, products[1].AnnualCosts);
         }
 
         [Fact]

@@ -12,7 +12,7 @@ namespace Virevox.unit.tests
         [InlineData(6000, 1380, 1400)]
         public void Build_Products_ShouldCreateListOfProducts(long consumption, 
                                                               long expectedAnnualConstsBasic, 
-                                                              int expectedAnnualConstsBasicPackaged)
+                                                              int expectedAnnualConstsPackaged)
         {
             // Arrange
             var productBuider = new ProductBuilder();
@@ -24,7 +24,7 @@ namespace Virevox.unit.tests
             // Assert
             Assert.Equal(2, products.Length);
             Assert.Equal(expectedAnnualConstsBasic, products[0].AnnualCosts);
-            Assert.Equal(expectedAnnualConstsBasicPackaged, products[1].AnnualCosts);
+            Assert.Equal(expectedAnnualConstsPackaged, products[1].AnnualCosts);
         }
     }
 }

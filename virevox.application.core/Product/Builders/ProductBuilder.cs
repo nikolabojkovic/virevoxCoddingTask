@@ -4,7 +4,6 @@ namespace Virevox.application.core
 {
     public class ProductBuilder : IProductBuilder
     {
-        //private readonly ICostsCalculator _basicTariffCalculator;
         private long _consumption;
 
         public ProductBuilder() {}
